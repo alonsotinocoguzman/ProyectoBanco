@@ -2,6 +2,7 @@ package com.project.bank.ProjectBank.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.codecs.pojo.annotations.BsonIgnore;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,7 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class AccountType {
     @Id
-    private ObjectId idAccountType;
+    @BsonIgnore
+    private String id;
+    private Integer idAccountType;
     private String description;
 
 }
