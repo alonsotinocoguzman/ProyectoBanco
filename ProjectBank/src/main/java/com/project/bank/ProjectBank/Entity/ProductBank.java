@@ -13,5 +13,4 @@ public class ProductBank {
     @Id
     private ObjectId idProductBank;
     private String typeBankProduct;
-
 }
