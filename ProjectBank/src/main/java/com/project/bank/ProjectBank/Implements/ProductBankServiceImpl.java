@@ -38,6 +38,6 @@ public class ProductBankServiceImpl implements ProductBankService {
 
     @Override
     public Mono<ProductBank> getBankProductById(ObjectId bankProductId) {
-        return bankProductRepository.findAll().filter(bp -> bp.getIdProductBank().equals(bankProductId)).elementAt(0);
+        return bankProductRepository.findById(bankProductId);
     }
 }
