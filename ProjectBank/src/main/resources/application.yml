@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      database: bank
+      host: localhost
+      port: 27017
+server:
+  port: 8090
+management:
+  security:
+    enable: false
+security:
+  basic:
+    enable: false
