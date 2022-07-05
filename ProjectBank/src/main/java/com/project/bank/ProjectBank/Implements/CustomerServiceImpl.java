@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Mono<Customer> findById(ObjectId customerId) {
-        return customerRepository.findAll().filter(c -> c.getCustomerId().equals(customerId)).elementAt(0);
+        return customerRepository.findById(customerId);
     }
 
     @Override

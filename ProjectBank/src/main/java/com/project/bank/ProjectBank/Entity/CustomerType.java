@@ -6,11 +6,11 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "ProductBank")
+@Document(collection = "CustomerType")
 @Getter
 @Setter
-public class ProductBank {
+public class CustomerType {
     @Id
-    private ObjectId idProductBank;
-    private String typeBankProduct;
+    private ObjectId customerTypeId;
+    private String customerTypeDescription;
 }
