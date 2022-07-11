@@ -1,6 +1,6 @@
 package com.project.bank.ProjectBank.Implements;
 
-import com.project.bank.ProjectBank.Entity.ProductBank;
+import com.project.bank.ProjectBank.Model.Entity.ProductBank;
 import com.project.bank.ProjectBank.Repository.ProductBankRepository;
 import com.project.bank.ProjectBank.Service.ProductBankService;
 import lombok.AllArgsConstructor;

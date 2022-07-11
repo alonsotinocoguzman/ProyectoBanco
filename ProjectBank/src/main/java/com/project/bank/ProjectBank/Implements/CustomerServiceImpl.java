@@ -1,11 +1,10 @@
 package com.project.bank.ProjectBank.Implements;
 
-import com.project.bank.ProjectBank.Entity.Customer;
+import com.project.bank.ProjectBank.Model.Entity.Customer;
 import com.project.bank.ProjectBank.Repository.CustomerRepository;
 import com.project.bank.ProjectBank.Service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

@@ -1,4 +1,4 @@
-package com.project.bank.ProjectBank.Entity;
+package com.project.bank.ProjectBank.Model.Entity;
 
 import lombok.Getter;
 import lombok.Setter;

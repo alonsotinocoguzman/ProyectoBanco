@@ -25,4 +25,10 @@ public class UIUtils {
   public static final String ACCOUNT_TYPE_INS = "save";
   public static final String ACCOUNT_TYPE_UPD = "update";
   public static final String ACCOUNT_TYPE_DEL = "delete/{id}";
+  public static final String BASEURL_TRANSACTION = "/transaction";
+  public static final String TRANSACTION_ALL = "/find-all";
+  public static final String TRANSACTION_ID = "/find-id/{id}";
+  public static final String TRANSACTION_INS = "save";
+  public static final String TRANSACTION_UPD = "update";
+  public static final String TRANSACTION_DEL = "delete/{id}";
 }
