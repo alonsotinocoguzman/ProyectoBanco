@@ -1,6 +1,6 @@
 package com.project.bank.ProjectBank.Controller;
 
-import com.project.bank.ProjectBank.Entity.AccountType;
+import com.project.bank.ProjectBank.Model.Entity.AccountType;
 import com.project.bank.ProjectBank.Service.AccountTypeService;
 import com.project.bank.ProjectBank.Utils.UIUtils;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class AccountTypeController {
     private final AccountTypeService accountTypeService;
 
     @GetMapping(UIUtils.ACCOUNT_TYPE_ALL)
-    public Flux<AccountType> getAllAccountType() {
+    public Flux<AccountType> getAllAccountType(){
         log.info("Ingreso a getAllAccountType");
         return accountTypeService.findAll();
     }

@@ -1,13 +1,11 @@
 package com.project.bank.ProjectBank.Controller;
 
-import com.project.bank.ProjectBank.Entity.Customer;
+import com.project.bank.ProjectBank.Model.Entity.Customer;
 import com.project.bank.ProjectBank.Service.CustomerService;
 import com.project.bank.ProjectBank.Utils.UIUtils;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

@@ -1,6 +1,6 @@
 package com.project.bank.ProjectBank.Implements;
 
-import com.project.bank.ProjectBank.Entity.CustomerType;
+import com.project.bank.ProjectBank.Model.Entity.CustomerType;
 import com.project.bank.ProjectBank.Repository.CustomerTypeRepository;
 import com.project.bank.ProjectBank.Service.CustomerTypeService;
 import lombok.AllArgsConstructor;

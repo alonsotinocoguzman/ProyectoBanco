@@ -1,6 +1,6 @@
 package com.project.bank.ProjectBank.Controller;
 
-import com.project.bank.ProjectBank.Entity.ProductBank;
+import com.project.bank.ProjectBank.Model.Entity.ProductBank;
 import com.project.bank.ProjectBank.Service.ProductBankService;
 import com.project.bank.ProjectBank.Utils.UIUtils;
 import lombok.AllArgsConstructor;

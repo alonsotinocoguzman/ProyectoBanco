@@ -1,6 +1,6 @@
 package com.project.bank.ProjectBank.Service;
 
-import com.project.bank.ProjectBank.Entity.ProductBank;
+import com.project.bank.ProjectBank.Model.Entity.ProductBank;
 import org.bson.types.ObjectId;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
