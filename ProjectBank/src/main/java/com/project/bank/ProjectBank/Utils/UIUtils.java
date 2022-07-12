@@ -37,4 +37,10 @@ public class UIUtils {
   public static final String CARD_PAY_BALANCE = "/pay-balance";
   public static final String CARD_GET_BALANCE = "/debit-credit";
   public static final String CARD_LOAD_BALANCE = "/load-balance/{id}";
+  public static final String BASE_URL_PROFILE = "/profile";
+  public static final String PROFILE_ALL = "/find-all";
+  public static final String PROFILE_ID = "/find-id/{idAccountType}";
+  public static final String PROFILE_INS = "save";
+  public static final String PROFILE_UPD = "update";
+  public static final String PROFILE_DEL = "delete/{id}";
 }
