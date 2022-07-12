@@ -1,10 +1,12 @@
 package com.project.bank.ProjectBank.Model.Implements;
 
 import com.project.bank.ProjectBank.Model.Entity.Card;
+import com.project.bank.ProjectBank.Model.Entity.Dto.CardDto;
 import com.project.bank.ProjectBank.Model.Service.CardService;
 import com.project.bank.ProjectBank.Repository.CardRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -49,5 +51,28 @@ public class CardServiceImpl implements CardService {
               card.setDebitBalance(0.0);
               return cardRepository.save(card);
             });
+  }
+
+  @Override
+  public Mono<CardDto> getBalance(String id) {
+    return cardRepository
+        .findById(id)
+        .switchIfEmpty(Mono.error(new Exception("No se encontraron movimientos")))
+        .map(this::convertEntityToDto);
+  }
+
+  @Override
+  public Flux<CardDto> getBalanceByCustomerId(String id) {
+    return cardRepository
+        .findAll()
+        .filter(customerId -> customerId.getCustomerId().equals(id))
+        .switchIfEmpty(Mono.error(new Exception("No se encontraron movimientos para este cliente")))
+        .map(this::convertEntityToDto);
+  }
+
+  private CardDto convertEntityToDto(Card card) {
+    CardDto cardDto = new CardDto();
+    cardDto.setAvailableBalance(card.getAvailableBalance());
+    return cardDto;
   }
 }
