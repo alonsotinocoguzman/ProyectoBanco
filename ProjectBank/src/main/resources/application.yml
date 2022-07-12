@@ -1,4 +1,11 @@
 spring:
+  application:
+    name: project-bank
+  cloud:
+    config:
+      uri: http://localhost:8081
+      username: prueba
+      password: Pru3b4
   data:
     mongodb:
       database: bank

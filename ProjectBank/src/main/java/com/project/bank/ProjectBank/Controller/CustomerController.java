@@ -1,7 +1,7 @@
 package com.project.bank.ProjectBank.Controller;
 
 import com.project.bank.ProjectBank.Model.Entity.Customer;
-import com.project.bank.ProjectBank.Service.CustomerService;
+import com.project.bank.ProjectBank.Model.Service.CustomerService;
 import com.project.bank.ProjectBank.Utils.UIUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

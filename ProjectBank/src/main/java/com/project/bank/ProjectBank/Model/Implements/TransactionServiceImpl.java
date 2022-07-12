@@ -1,23 +1,21 @@
-package com.project.bank.ProjectBank.Implements;
+package com.project.bank.ProjectBank.Model.Implements;
 
 import com.project.bank.ProjectBank.Model.Entity.Transaction;
 import com.project.bank.ProjectBank.Repository.TransactionRepository;
-import com.project.bank.ProjectBank.Service.TransactionService;
+import com.project.bank.ProjectBank.Model.Service.TransactionService;
 import lombok.AllArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 @Service
 @AllArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     @Override
-    public Flux<Transaction> saveTransations(List<Transaction> transactionList) {
-        return transactionRepository.saveAll(transactionList);
+    public Mono<Transaction> saveTransations(Transaction transaction) {
+        return transactionRepository.save(transaction);
     }
 
     @Override
@@ -38,5 +36,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Mono<Transaction> getTransationById(ObjectId id) {
         return transactionRepository.findById(id);
+    }
+
+    @Override
+    public Mono<Double> getTransactionBalance(ObjectId id) {
+        return transactionRepository.findById(id).map(Transaction::getBalance);
     }
 }
