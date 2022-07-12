@@ -19,5 +19,8 @@ public class Transaction {
   private String accountType;
   private String customerType;
   private String productBank;
+  private Double balance;
+  private Double creditLimit;
+  private Double debitBalance;
   private Date creationDate;
 }

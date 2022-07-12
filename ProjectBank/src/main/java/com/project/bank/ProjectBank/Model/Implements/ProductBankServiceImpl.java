@@ -1,8 +1,8 @@
-package com.project.bank.ProjectBank.Implements;
+package com.project.bank.ProjectBank.Model.Implements;
 
 import com.project.bank.ProjectBank.Model.Entity.ProductBank;
 import com.project.bank.ProjectBank.Repository.ProductBankRepository;
-import com.project.bank.ProjectBank.Service.ProductBankService;
+import com.project.bank.ProjectBank.Model.Service.ProductBankService;
 import lombok.AllArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;

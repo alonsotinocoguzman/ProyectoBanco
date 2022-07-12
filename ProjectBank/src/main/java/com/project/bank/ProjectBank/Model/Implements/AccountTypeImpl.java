@@ -1,9 +1,9 @@
-package com.project.bank.ProjectBank.Implements;
+package com.project.bank.ProjectBank.Model.Implements;
 
 import com.project.bank.ProjectBank.Model.Entity.AccountType;
 import com.project.bank.ProjectBank.Repository.AccountTypeRepository;
-import com.project.bank.ProjectBank.Service.AccountTypeService;
-import com.project.bank.ProjectBank.Service.ProductBankService;
+import com.project.bank.ProjectBank.Model.Service.AccountTypeService;
+import com.project.bank.ProjectBank.Model.Service.ProductBankService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;

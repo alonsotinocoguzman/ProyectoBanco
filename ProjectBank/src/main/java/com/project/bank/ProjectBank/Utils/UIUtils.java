@@ -31,4 +31,11 @@ public class UIUtils {
   public static final String TRANSACTION_INS = "save";
   public static final String TRANSACTION_UPD = "update";
   public static final String TRANSACTION_DEL = "delete/{id}";
+  public static final String TRANSACTION_BALANCE = "balance/{id}";
+  public static final String TRANSACTION_PAY_CREDIT = "pay-credit";
+  public static final String CARD_PAY_CREDIT="pay-credit";
+  public static final String CARD_DEBIT_CREDIT="debit-credit";
+  public static final String CARD_BALANCE_BY_ID="card-balance/{id}";
+  public static final String CARD_BALANCE_ALL="balance-all";
+  public static final String CARD_LOAD_BALANCE="load-balance/{id}";
 }

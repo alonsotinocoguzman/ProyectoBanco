@@ -1,4 +1,4 @@
-package com.project.bank.ProjectBank.Service;
+package com.project.bank.ProjectBank.Model.Service;
 
 import com.project.bank.ProjectBank.Model.Entity.CustomerType;
 import org.bson.types.ObjectId;
