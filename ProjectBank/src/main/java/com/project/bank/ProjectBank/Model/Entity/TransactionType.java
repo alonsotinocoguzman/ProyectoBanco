@@ -16,6 +16,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TransactionType {
     @Id
     private ObjectId id;
-    private String Code;
-    private String Description;
+    private String code;
+    private String description;
 }

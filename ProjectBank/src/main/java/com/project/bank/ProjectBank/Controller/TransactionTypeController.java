@@ -18,17 +18,17 @@ public class TransactionTypeController {
     private TransactionTypeService transactionTypeService;
 
     @PostMapping(UIUtils.TRANSACTION_TYPE_INS)
-    public Mono<TransactionType> saveTransactionType(TransactionType transactionType) {
+    public Mono<TransactionType> saveTransactionType(@RequestBody TransactionType transactionType) {
         return transactionTypeService.saveTransactionType(transactionType);
     }
 
     @PutMapping(UIUtils.TRANSACTION_TYPE_UPD)
-    public Mono<TransactionType> updateTransaction(TransactionType transactionType) {
+    public Mono<TransactionType> updateTransaction(@RequestBody TransactionType transactionType) {
         return transactionTypeService.updateTransactionType(transactionType);
     }
 
     @DeleteMapping(UIUtils.TRANSACTION_TYPE_DEL)
-    public Mono<Void> deleteTransactionType(ObjectId id) {
+    public Mono<Void> deleteTransactionType(@PathVariable(value = "transactionTypeId") ObjectId id) {
         return transactionTypeService.deleteTransactionType(id);
     }
 
@@ -38,7 +38,7 @@ public class TransactionTypeController {
     }
 
     @GetMapping(UIUtils.TRANSACTION_TYPE_ID)
-    public Mono<TransactionType> getTransactionType(String code) {
+    public Mono<TransactionType> getTransactionType(@PathVariable(value = "transactionTypeCode") String code) {
         return transactionTypeService.getTransactionType(code);
     }
 }
