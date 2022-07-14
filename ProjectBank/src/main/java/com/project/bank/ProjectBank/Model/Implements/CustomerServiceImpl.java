@@ -25,8 +25,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Flux<Customer> saveCustomer(Flux<Customer> customer) {
-        return customerRepository.saveAll(customer);
+    public Mono<Customer> saveCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override

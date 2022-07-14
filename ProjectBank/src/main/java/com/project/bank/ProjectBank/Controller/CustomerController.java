@@ -30,7 +30,7 @@ public class CustomerController {
   }
 
   @PostMapping(UIUtils.CUSTOMER_INS)
-  public Flux<Customer> saveCustomer(@RequestBody Flux<Customer> customer){
+  public Mono<Customer> saveCustomer(@RequestBody Customer customer){
     log.info("Ingreso a saveCustomer");
     return customerService.saveCustomer(customer);
   }

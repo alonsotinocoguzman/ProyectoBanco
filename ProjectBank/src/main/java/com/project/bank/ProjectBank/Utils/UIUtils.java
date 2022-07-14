@@ -43,4 +43,16 @@ public class UIUtils {
   public static final String PROFILE_INS = "save";
   public static final String PROFILE_UPD = "update";
   public static final String PROFILE_DEL = "delete/{id}";
+  public static final String BANKACCOUNT_BASEURL = "bankaccount";
+  public static final String BANKACCOUNT_INS = "save";
+  public static final String BANKACCOUNT_UPD = "update";
+  public static final String BANKACCOUNT_DEL = "delete/{bankAccountId}";
+  public static final String BANKACCOUNT_ALL_BY_CUSTOMER = "find-all-customer/{customerId}";
+  public static final String BANKACCOUNT_ID = "find-id/{bankAccountId}";
+  public static final String TRANSACTION_TYPE_BASEURL="transaction-type";
+  public static final String TRANSACTION_TYPE_INS="save";
+  public static final String TRANSACTION_TYPE_UPD="update";
+  public static final String TRANSACTION_TYPE_DEL="delete/{transactionTypeId}";
+  public static final String TRANSACTION_TYPE_ALL="find-all";
+  public static final String TRANSACTION_TYPE_ID="find-id/{transactionTypeCode}";
 }
