@@ -20,13 +20,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Mono<Customer> findById(ObjectId customerId) {
-        return customerRepository.findById(customerId);
+    public Mono<Customer> findByDocumentNumber(String documentNumber) {
+        return customerRepository.findAll()
+                .filter(x->x.getDni().equals(documentNumber))
+                .elementAt(0);
     }
 
     @Override
-    public Flux<Customer> saveCustomer(Flux<Customer> customer) {
-        return customerRepository.saveAll(customer);
+    public Mono<Customer> saveCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override

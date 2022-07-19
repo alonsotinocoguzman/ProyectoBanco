@@ -24,13 +24,13 @@ public class CustomerController {
   }
 
   @GetMapping(UIUtils.CUSTOMER_ID)
-  public Mono<Customer> getCustomerById(@PathVariable(value = "customerId") ObjectId customerId) {
-    log.info("Ingreso a getCustomerById");
-    return customerService.findById(customerId);
+  public Mono<Customer> getCustomerByDocumentNumber(@PathVariable(value = "documentNumber") String documentNumber) {
+    log.info("Ingreso a getCustomerByDocumentNumber");
+    return customerService.findByDocumentNumber(documentNumber);
   }
 
   @PostMapping(UIUtils.CUSTOMER_INS)
-  public Flux<Customer> saveCustomer(@RequestBody Flux<Customer> customer){
+  public Mono<Customer> saveCustomer(@RequestBody Customer customer){
     log.info("Ingreso a saveCustomer");
     return customerService.saveCustomer(customer);
   }
