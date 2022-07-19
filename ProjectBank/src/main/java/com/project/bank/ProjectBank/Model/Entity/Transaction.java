@@ -23,4 +23,5 @@ public class Transaction {
   private Double creditLimit;
   private Double debitBalance;
   private Date creationDate;
+  private String transactionTypeCode;
 }
