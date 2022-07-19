@@ -24,9 +24,9 @@ public class CustomerController {
   }
 
   @GetMapping(UIUtils.CUSTOMER_ID)
-  public Mono<Customer> getCustomerById(@PathVariable(value = "customerId") ObjectId customerId) {
-    log.info("Ingreso a getCustomerById");
-    return customerService.findById(customerId);
+  public Mono<Customer> getCustomerByDocumentNumber(@PathVariable(value = "documentNumber") String documentNumber) {
+    log.info("Ingreso a getCustomerByDocumentNumber");
+    return customerService.findByDocumentNumber(documentNumber);
   }
 
   @PostMapping(UIUtils.CUSTOMER_INS)

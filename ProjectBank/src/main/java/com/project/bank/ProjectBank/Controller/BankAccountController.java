@@ -1,7 +1,9 @@
 package com.project.bank.ProjectBank.Controller;
 
 import com.project.bank.ProjectBank.Model.Entity.BankAccount;
+import com.project.bank.ProjectBank.Model.Entity.Customer;
 import com.project.bank.ProjectBank.Model.Service.BankAccountService;
+import com.project.bank.ProjectBank.Model.Service.CustomerService;
 import com.project.bank.ProjectBank.Utils.UIUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +18,17 @@ import reactor.core.publisher.Mono;
 @RequestMapping(UIUtils.BANKACCOUNT_BASEURL)
 public class BankAccountController {
     private final BankAccountService bankAccountService;
+    private final CustomerService customerService;
 
     @PostMapping(UIUtils.BANKACCOUNT_INS)
     public Mono<BankAccount> saveBankAccount(@RequestBody BankAccount bankAccount) {
-        return bankAccountService.saveBankAccount(bankAccount);
+        log.info("INICIO saveBankAccount");
+
+        /*Mono<Customer> customerMono = customerService.findByDocumentNumber(bankAccount.getDocumentNumber());
+        log.info("customerDataAlex: " + customerMono.subscribe(x-> System.out.println(x)));*/
+        Mono<BankAccount> bankAccountMono = bankAccountService.saveBankAccount(bankAccount);
+        log.info("FIN saveBankAccount");
+        return bankAccountMono;
     }
 
     @PutMapping(UIUtils.BANKACCOUNT_UPD)
@@ -33,12 +42,12 @@ public class BankAccountController {
     }
 
     @GetMapping(UIUtils.BANKACCOUNT_ALL_BY_CUSTOMER)
-    public Flux<BankAccount> getAllBankAccountsByCustomer(@PathVariable(value = "customerId") ObjectId customerId) {
-        return bankAccountService.getAllBankAccountsByCustomer(customerId);
+    public Flux<BankAccount> getAllBankAccountsByCustomer(@PathVariable(value = "documentNumber") String documentNumber) {
+        return bankAccountService.getAllBankAccountsByCustomer(documentNumber);
     }
 
     @GetMapping(UIUtils.BANKACCOUNT_ID)
     public Mono<BankAccount> getBankAccount(@PathVariable(value = "bankAccountId") ObjectId bankAccountId) {
-        return  bankAccountService.getBankAccount(bankAccountId);
+        return bankAccountService.getBankAccount(bankAccountId);
     }
 }

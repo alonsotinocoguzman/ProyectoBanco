@@ -15,8 +15,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "BankAccount")
 public class BankAccount {
     @Id
-    private ObjectId BankAccountId;
-    private ObjectId customerId;
+    private ObjectId bankAccountId;
+    private String documentNumber;
     private String numberAccount;
     private Float accountBalance;
     private Integer accountTypeId;
