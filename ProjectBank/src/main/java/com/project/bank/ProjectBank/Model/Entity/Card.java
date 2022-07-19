@@ -19,4 +19,6 @@ public class Card {
   private Double debitBalance;
   private Double creditLimit;
   private String customerId;
+  private String numberDocument;
+  private String numberAccountToOther;
 }
