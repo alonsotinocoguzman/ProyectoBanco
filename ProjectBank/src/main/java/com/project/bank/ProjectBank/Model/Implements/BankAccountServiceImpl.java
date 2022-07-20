@@ -10,6 +10,7 @@ import com.project.bank.ProjectBank.Repository.CardRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -91,9 +92,17 @@ public class BankAccountServiceImpl implements BankAccountService {
                 }
             } else if (x.getCustomerTypeId().equals("EMP")) {
                 log.info("Cuenta Empresarial");
-                if (!bankAccount.getAccountTypeId().equals(1) || !bankAccount.getAccountTypeId().equals(3)) {
+                if (bankAccount.getAccountTypeId().equals(1)) {
+                    isValid.set(false);
+                    log.info("Tipo de Cuenta -> AHORROS | isValid: " + isValid.get());
+                }
+                if (bankAccount.getAccountTypeId().equals(2)) {
                     isValid.set(true);
-                    System.out.println("isValid:" + isValid.get());
+                    log.info("Tipo de Cuenta -> CORRIENTE | isValid: " + isValid.get());
+                }
+                if (bankAccount.getAccountTypeId().equals(3)) {
+                    isValid.set(false);
+                    log.info("Tipo de Cuenta -> A PLAZO FIJO | isValid: " + isValid.get());
                 }
             }
             log.info("FIN validateSave() retorna -> " + isValid.get());
