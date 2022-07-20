@@ -32,4 +32,5 @@ public class BankAccount {
     private Double commission = 1.5;
     private String profile;
     private String creationDate = DateFormat.getInstance().format(new Date());
+    private Boolean overdueDebt = false;
 }

@@ -8,15 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ProjectBank" />
+        <module name="PryectoBanco" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ProjectBank" target="11" />
+      <module name="PryectoBanco" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ProjectBank" options="-parameters" />
+      <module name="PryectoBanco" options="-parameters" />
     </option>
   </component>
 </project>

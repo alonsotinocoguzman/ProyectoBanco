@@ -8,6 +8,7 @@ public class UIUtils {
     public static final String CUSTOMER_INS = "save";
     public static final String CUSTOMER_UPD = "update";
     public static final String CUSTOMER_DEL = "delete/{customerId}";
+    public static final String CUSTOMER_ALL_PRODUCTS="/customer-all-products";
     public static final String BANKPRODUCT_BASEURL = "productbank";
     public static final String BANKPRODUCT_INS = "save";
     public static final String BANKPRODUCT_UPD = "update";

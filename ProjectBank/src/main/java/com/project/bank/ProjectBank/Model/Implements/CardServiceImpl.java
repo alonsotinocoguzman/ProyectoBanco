@@ -5,12 +5,14 @@ import com.project.bank.ProjectBank.Model.Entity.Dto.CardDto;
 import com.project.bank.ProjectBank.Model.Service.CardService;
 import com.project.bank.ProjectBank.Repository.CardRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class CardServiceImpl implements CardService {
   private final CardRepository cardRepository;
 
@@ -32,8 +34,34 @@ public class CardServiceImpl implements CardService {
   }
 
   @Override
-  public Mono<Card> createAccountInitial(Card car) {
-    return cardRepository.save(car);
+  public Flux<Card> createAccountInitial(Card car) {
+    return cardRepository
+        .findAll()
+        .switchIfEmpty(cardRepository.save(car))
+        .flatMap(
+            customer -> {
+              if (customer.getNumberDocument().equals(car.getNumberDocument())) {
+                log.info("valido documento");
+                if (customer.isOverdueDebt()) {
+                  log.info("valido isOverdueDebt");
+                  Flux.error(new Error("cuenta con deuda"));
+                } else {
+                  log.info("no tiene deuda");
+                  return cardRepository.save(car);
+                }
+              } else {
+                log.info("cliente no encontrado");
+                return cardRepository.save(car);
+              }
+              return Flux.empty();
+            });
+  }
+
+  private Flux<Card> overdueDebt(String nroDocument) {
+    return cardRepository
+        .findAll()
+        .filter(z -> z.getNumberDocument().equals(nroDocument))
+        .filter(Card::isOverdueDebt);
   }
 
   @Override
