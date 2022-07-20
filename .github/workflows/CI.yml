@@ -22,8 +22,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: clean with Maven
-      run: mvn clean
     - name: install with Maven
       run: mvn install
     - name: Build with Maven
