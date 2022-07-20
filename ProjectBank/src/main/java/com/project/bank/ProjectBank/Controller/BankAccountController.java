@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.io.IOException;
+
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -21,7 +23,7 @@ public class BankAccountController {
     private final CustomerService customerService;
 
     @PostMapping(UIUtils.BANKACCOUNT_INS)
-    public Mono<BankAccount> saveBankAccount(@RequestBody BankAccount bankAccount) {
+    public Mono<BankAccount> saveBankAccount(@RequestBody BankAccount bankAccount)throws Exception {
         log.info("INICIO saveBankAccount");
         Mono<BankAccount> bankAccountMono = bankAccountService.saveBankAccount(bankAccount);
         /*bankAccountMono.subscribe(ba -> {

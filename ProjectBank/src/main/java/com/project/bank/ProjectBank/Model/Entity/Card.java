@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "cad")
+@Document(collection = "card")
 public class Card {
   @Id private ObjectId id;
   private String numberAccount;
@@ -19,4 +19,6 @@ public class Card {
   private Double debitBalance;
   private Double creditLimit;
   private String customerId;
+  private String numberDocument;
+  private String numberAccountToOther;
 }

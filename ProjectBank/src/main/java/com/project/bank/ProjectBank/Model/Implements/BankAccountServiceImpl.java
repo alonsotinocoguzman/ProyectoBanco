@@ -1,10 +1,12 @@
 package com.project.bank.ProjectBank.Model.Implements;
 
+import com.project.bank.ProjectBank.Enum.Profile;
 import com.project.bank.ProjectBank.Model.Entity.BankAccount;
 import com.project.bank.ProjectBank.Model.Entity.Customer;
-import com.project.bank.ProjectBank.Repository.BankAccountRepository;
 import com.project.bank.ProjectBank.Model.Service.BankAccountService;
 import com.project.bank.ProjectBank.Model.Service.CustomerService;
+import com.project.bank.ProjectBank.Repository.BankAccountRepository;
+import com.project.bank.ProjectBank.Repository.CardRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
@@ -13,6 +15,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -23,6 +27,7 @@ import java.util.stream.Collectors;
 public class BankAccountServiceImpl implements BankAccountService {
     private final BankAccountRepository bankAccountRepository;
     private final CustomerService customerService;
+    private final CardRepository cardRepository;
 
     @Override
     public Mono<BankAccount> saveBankAccount(BankAccount bankAccount) {
@@ -97,14 +102,38 @@ public class BankAccountServiceImpl implements BankAccountService {
         return isValidated;
     }
 
-    @Override
-    public Mono<BankAccount> updateBankAccount(BankAccount bankAccount) {
+    private Mono<BankAccount> save(BankAccount bankAccount) throws Exception {
+        if (bankAccount.getProfile().equals(Profile.VIP.toString())
+                && bankAccount.getStartingBalance() == 0.0) {
+            cardRepository
+                    .findAll()
+                    .filter(
+                            customerId -> customerId.getNumberDocument().equals(bankAccount.getDocumentNumber()))
+                    .switchIfEmpty(Mono.error(new IOException("no existe customerId")))
+                    .filter(
+                            numberAccountToOther ->
+                                    numberAccountToOther
+                                            .getNumberAccountToOther()
+                                            .equals(bankAccount.getNumberAccountToOther()))
+                    .switchIfEmpty(Mono.error(new IOException("no existe cuenta")))
+                    .map(
+                            saveData -> {
+                                bankAccount.setCommission(0.0);
+                                return bankAccountRepository.save(bankAccount);
+                            });
+        } else if (bankAccount.getProfile().equals(Profile.PYME.toString())) {
+            cardRepository
+                    .findAll()
+                    .filter(
+                            customerId -> customerId.getNumberDocument().equals(bankAccount.getDocumentNumber()))
+                    .map(
+                            saveData -> {
+                                bankAccount.setCommission(0.0);
+                                return bankAccountRepository.save(bankAccount);
+                            });
+            bankAccount.setCommission(0.0);
+        }
         return bankAccountRepository.save(bankAccount);
-    }
-
-    @Override
-    public Mono<Void> deleteBankAccount(ObjectId bankAccountId) {
-        return bankAccountRepository.deleteById(bankAccountId);
     }
 
     @Override
@@ -114,6 +143,16 @@ public class BankAccountServiceImpl implements BankAccountService {
         bankAccountsByDocNumber.count().subscribe();
 
         return bankAccountsByDocNumber;
+    }
+
+    @Override
+    public Mono<BankAccount> updateBankAccount(BankAccount bankAccount) {
+        return bankAccountRepository.save(bankAccount);
+    }
+
+    @Override
+    public Mono<Void> deleteBankAccount(ObjectId bankAccountId) {
+        return bankAccountRepository.deleteById(bankAccountId);
     }
 
     @Override
