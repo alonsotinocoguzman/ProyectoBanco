@@ -46,4 +46,8 @@ public class CustomerController {
     log.info("Ingreso a deleteCustomer");
     return customerService.deleteCustomer(customerId);
   }
+  @GetMapping(UIUtils.CUSTOMER_ALL_PRODUCTS)
+  public Flux<Object> getCustomerAllProucts(@RequestParam(value = "nroDocumento") String nroDocumento){
+    return customerService.getCustomerAllProucts(nroDocumento);
+  }
 }

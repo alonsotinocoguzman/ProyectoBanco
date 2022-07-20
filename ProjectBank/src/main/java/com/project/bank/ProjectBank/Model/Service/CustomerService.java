@@ -11,4 +11,5 @@ public interface CustomerService {
   Mono<Customer> saveCustomer(Customer customer);
   Mono<Customer> updateCustomer(Customer customer);
   Mono<Void> deleteCustomer(ObjectId customerId);
+  Flux<Object> getCustomerAllProucts(String nroDocument);
 }

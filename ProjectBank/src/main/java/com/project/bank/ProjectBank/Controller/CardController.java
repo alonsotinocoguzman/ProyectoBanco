@@ -6,6 +6,7 @@ import com.project.bank.ProjectBank.Model.Service.CardService;
 import com.project.bank.ProjectBank.Utils.UIUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -15,7 +16,7 @@ public class CardController {
   private final CardService cardService;
 
   @PostMapping(UIUtils.CARD_CREATE)
-  public Mono<Card> createCard(@RequestBody Card cardMono) {
+  public Flux<Card> createCard(@RequestBody Card cardMono) {
     return cardService.createAccountInitial(cardMono);
   }
 
