@@ -25,11 +25,21 @@ public class BankAccountController {
     @PostMapping(UIUtils.BANKACCOUNT_INS)
     public Mono<BankAccount> saveBankAccount(@RequestBody BankAccount bankAccount)throws Exception {
         log.info("INICIO saveBankAccount");
-
-        /*Mono<Customer> customerMono = customerService.findByDocumentNumber(bankAccount.getDocumentNumber());
-        log.info("customerDataAlex: " + customerMono.subscribe(x-> System.out.println(x)));*/
         Mono<BankAccount> bankAccountMono = bankAccountService.saveBankAccount(bankAccount);
+        /*bankAccountMono.subscribe(ba -> {
+            log.info("FIN saveBankAccount");
+            log.info("Cuenta Bancaria Registrada:");
+            log.info(ba.getDocumentNumber());
+            log.info(ba.getNumberAccount());
+            log.info(ba.getAccountBalance().toString());
+        });*/
+        /*BankAccount ba = bankAccountMono.block();
         log.info("FIN saveBankAccount");
+        log.info("Cuenta Bancaria Registrada:");
+        log.info(ba.getDocumentNumber());
+        log.info(ba.getNumberAccount());
+        log.info(ba.getAccountBalance().toString());*/
+
         return bankAccountMono;
     }
 
